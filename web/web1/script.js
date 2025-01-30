@@ -1,25 +1,25 @@
-let editTaskId = null; // Simpan ID tugas yang sedang diedit
+let editTaskId = null; // Buat ID Tugas
 
 function addTask() {
     const inputField = document.getElementById('tf-input');
     const taskText = inputField.value.trim();
-    if (!taskText) return; // Cegah input kosong
+    if (!taskText) return; // Biar gada input kosong
 
     if (editTaskId) {
-        // Jika sedang dalam mode edit, update teks tugas
+        // Kalo mode edit, update teks
         const taskItem = document.getElementById(editTaskId);
         taskItem.querySelector('span').textContent = taskText;
         resetForm();
         return;
     }
 
-    // Buat elemen tugas baru
+    // Buat baru
     const taskId = new Date().valueOf().toString() + Math.random().toString(36).substring(2, 7);
     const task = document.createElement('li');
     task.classList.add('list-item');
     task.id = taskId;
 
-    // Span untuk teks tugas
+    // Span tugas
     const taskSpan = document.createElement('span');
     taskSpan.textContent = taskText;
 
